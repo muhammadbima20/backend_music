@@ -45,7 +45,7 @@ class UserSongController extends Controller
 
         $user = $token->tokenable;
 
-        $savedSong = UserSong::where('user_id', $user->id)->where('song_id', $params['id'])->first();
+        $savedSong = UserSong::where('user_id', $user->id)->where('song_id', $params['id'])->withTrashed()->first();
 
         $message = '';
         if (empty($savedSong)) {
